@@ -1,9 +1,7 @@
-
-import { Github, Instagram, Twitter, Facebook, Discord } from 'lucide-react'
-
+import { Github, Instagram, Twitter, Facebook, MessageCircle } from "lucide-react";
 export default function App() {
   const socials = [
-    { icon: <Discord className='w-5 h-5' />, url: 'https://discord.com/channels/@wichlene' },
+    { icon: <MessageCircle className="w-5 h-5" />, url: 'https://discord.com/channels/@wichlene' },
     { icon: <Facebook className='w-5 h-5' />, url: 'https://www.facebook.com/profile.php?id=61573834593870' },
     { icon: <Instagram className='w-5 h-5' />, url: 'https://www.instagram.com/primeairdrop3/' },
     { icon: <Twitter className='w-5 h-5' />, url: 'https://x.com/muhtac10' },
