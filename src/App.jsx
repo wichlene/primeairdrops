@@ -1,38 +1,115 @@
 import React from "react";
-import { Github, Instagram, Twitter, Facebook, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
+
+const projects = [
+  { name: "Efsane.tr", link: "https://efsanetr.com/tr_TR/internal/register/?inviteCode=CZS02K" },
+  { name: "Grass", link: "https://app.grass.io/register?referral=4AbAhV-0w4MhgKU" },
+  { name: "Teneo", link: "https://dashboard.teneo.pro/auth/signup?referralCode=c8uwI" },
+  { name: "Jigsaw", link: "https://jigsaw.build?ref=emrckc9mszwf" },
+  { name: "Globshaga", link: "https://glob.shaga.xyz/?r=NIgRLgzM5B" },
+  { name: "Teafi", link: "https://app.tea-fi.com/?ref=3bbx7e" },
+  { name: "3DOS", link: "https://dashboard.3dos.io/register?ref_code=c89a31" },
+  { name: "Toggle", link: "https://toggle.pro/sign-up/8df15eb2-bee5-4ef3-bee6-fca54b3ca935" },
+  { name: "Despeed", link: "https://app.despeed.net/register?ref=9cmFGcePqiXV" },
+  { name: "Perseptron", link: "https://app.blockmesh.xyz/register?invite_code=54fd20e0-32cf-4177-a22f-74eda9161d15" },
+  { name: "Incentiv", link: "https://testnet.incentiv.io/login?refCode=6x6Kuh9e7nBrEX9hFYj6SX" },
+  { name: "Sosovalue", link: "https://sosovalue.com/join/R98NT7Z7" },
+  { name: "Trex", link: "https://s.trex.xyz/lljUoy" },
+];
 
 export default function App() {
-  const socials = [
-    { icon: <MessageCircle className="w-6 h-6" />, url: "https://discord.com/channels/@wichlene" },
-    { icon: <Facebook className="w-6 h-6" />, url: "https://www.facebook.com/profile.php?id=61573834593870" },
-    { icon: <Instagram className="w-6 h-6" />, url: "https://www.instagram.com/primeairdrop3/" },
-    { icon: <Twitter className="w-6 h-6" />, url: "https://x.com/muhtac10" },
-    { icon: <Github className="w-6 h-6" />, url: "https://github.com/wichlene" },
-  ];
- return (
-    <div style={{ minHeight: "100vh", backgroundColor: "black", color: "white", padding: "40px", textAlign: "center" }}>
-      <h1 style={{ fontSize: "2rem", color: "#FFD700", marginBottom: "10px" }}>PrimeAirdrops</h1>
-      <p style={{ color: "#aaa", marginBottom: "30px" }}>
-        Web3 ve DePIN projeleri için güvenli yönlendirme platformu
-      </p>
+  return (
+    <div
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        minHeight: "100vh",
+        fontFamily: "Arial, sans-serif",
+        padding: "40px 20px",
+        textAlign: "center",
+      }}
+    >
+      <motion.h1
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        style={{
+          fontSize: "2.5rem",
+          color: "#FFD700",
+          marginBottom: "10px",
+          textShadow: "0 0 10px #FFD700",
+        }}
+      >
+        PrimeAirdrops
+      </motion.h1>
 
-      <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "40px" }}>
-        {socials.map((item, i) => (
-          <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" style={{ color: "white" }}>
-            {item.icon}
-          </a>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        style={{ color: "#aaa", marginBottom: "40px" }}
+      >
+        Web3 ve DePIN projelerinde kazanç fırsatlarını keşfet ✨
+      </motion.p>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "20px",
+          maxWidth: "900px",
+          margin: "0 auto",
+        }}
+      >
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.6 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 15px #FFD700" }}
+            style={{
+              background: "linear-gradient(145deg, #1a1a1a, #000)",
+              border: "1px solid #333",
+              borderRadius: "15px",
+              padding: "25px 15px",
+              textAlign: "center",
+            }}
+          >
+            <h3 style={{ color: "#FFD700", marginBottom: "10px" }}>{project.name}</h3>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                backgroundColor: "#FFD700",
+                color: "#000",
+                padding: "8px 18px",
+                borderRadius: "8px",
+                fontWeight: "bold",
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+              }}
+            >
+              Katıl
+            </a>
+          </motion.div>
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px", maxWidth: "600px", margin: "0 auto" }}>
-        {projects.map((p, i) => (
-          <div key={i} style={{ border: "1px solid #333", borderRadius: "10px", padding: "20px" }}>
-            <h2 style={{ color: "#FFD700" }}>{p.name}</h2>
-            <p style={{ color: "#aaa" }}>{p.type}</p>
-            <p style={{ color: "#FFD700", marginTop: "10px" }}>{p.reward}</p>
-          </div>
-        ))}
-      </div>
+      <motion.footer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        style={{
+          marginTop: "50px",
+          color: "#666",
+          fontSize: "0.9rem",
+        }}
+      >
+        © 2025 PrimeAirdrops — Tüm Hakları Saklıdır
+      </motion.footer>
     </div>
   );
 }
