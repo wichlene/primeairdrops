@@ -1,5 +1,4 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 
 const projects = [
   { name: "Efsane.tr", link: "https://efsanetr.com/tr_TR/internal/register/?inviteCode=CZS02K" },
@@ -18,39 +17,38 @@ const projects = [
 ];
 
 export default function App() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setVisible(true), 300);
+  }, []);
+
   return (
     <div
       style={{
         backgroundColor: "black",
         color: "white",
         minHeight: "100vh",
-        fontFamily: "Arial, sans-serif",
         padding: "40px 20px",
+        fontFamily: "Arial, sans-serif",
         textAlign: "center",
+        transition: "opacity 1s ease-in-out",
+        opacity: visible ? 1 : 0,
       }}
     >
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+      <h1
         style={{
-          fontSize: "2.5rem",
           color: "#FFD700",
+          fontSize: "2.5rem",
           marginBottom: "10px",
           textShadow: "0 0 10px #FFD700",
         }}
       >
         PrimeAirdrops
-      </motion.h1>
+      </h1>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        style={{ color: "#aaa", marginBottom: "40px" }}
-      >
+      <p style={{ color: "#aaa", marginBottom: "30px" }}>
         Web3 ve DePIN projelerinde kazanç fırsatlarını keşfet ✨
-      </motion.p>
+      </p>
 
       <div
         style={{
@@ -61,55 +59,15 @@ export default function App() {
           margin: "0 auto",
         }}
       >
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.6 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 15px #FFD700" }}
+        {projects.map((p, i) => (
+          <div
+            key={i}
             style={{
               background: "linear-gradient(145deg, #1a1a1a, #000)",
               border: "1px solid #333",
               borderRadius: "15px",
               padding: "25px 15px",
-              textAlign: "center",
+              transition: "all 0.3s ease",
+              boxShadow: "0 0 10px rgba(255,215,0,0.1)",
             }}
-          >
-            <h3 style={{ color: "#FFD700", marginBottom: "10px" }}>{project.name}</h3>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-block",
-                backgroundColor: "#FFD700",
-                color: "#000",
-                padding: "8px 18px",
-                borderRadius: "8px",
-                fontWeight: "bold",
-                textDecoration: "none",
-                transition: "all 0.3s ease",
-              }}
-            >
-              Katıl
-            </a>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.footer
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        style={{
-          marginTop: "50px",
-          color: "#666",
-          fontSize: "0.9rem",
-        }}
-      >
-        © 2025 PrimeAirdrops — Tüm Hakları Saklıdır
-      </motion.footer>
-    </div>
-  );
-}
+            onMouse
